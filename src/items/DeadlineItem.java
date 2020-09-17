@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class DeadlineItem extends GenericItem{
     private LocalDate deadline;
     private String description;
+    public final int type = 3;
 
     public DeadlineItem() {
         super();

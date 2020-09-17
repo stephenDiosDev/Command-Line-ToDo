@@ -3,6 +3,7 @@ package items;
 public class GenericItem {
     private String name;
     private boolean completed;
+    public int type = 1;
 
     public GenericItem() {
         this.name = "EMPTY";

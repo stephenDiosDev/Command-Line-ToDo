@@ -3,6 +3,7 @@ package items;
 public class HabitItem extends GenericItem{
     private String description;
     private int spaceBetweenDays;
+    public final int type = 4;
 
     public HabitItem() {
         super();

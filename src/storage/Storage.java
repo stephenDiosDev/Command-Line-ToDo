@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 //stores info from fileIO class to hand to main logic
 public final class Storage {
-    private ArrayList<GenericItem> items;
+    public static ArrayList<GenericItem> items = new ArrayList<>();
 }

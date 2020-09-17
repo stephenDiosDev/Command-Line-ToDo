@@ -2,6 +2,7 @@ package items;
 
 public class WorkItem extends GenericItem{
     private String description;
+    public final int type = 2;
 
     public WorkItem() {
         super();

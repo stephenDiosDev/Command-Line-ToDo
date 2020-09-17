@@ -1,5 +1,6 @@
 package program;
 import items.*;
+import storage.Storage;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -9,8 +10,6 @@ import java.util.ArrayList;
 
 public class FileIO {
     /* TODO
-    function1: given a file name, find it and read it into arraylist. Store that list in the static storage class
-        if the files dne, throw exception/error
     function2: given file name and arraylist, open (or create) file, write contents of list to that file
      */
 
@@ -84,15 +83,64 @@ public class FileIO {
             System.out.println("IO Exception!");
         }
 
+        //add items from fileIO to storage class
         for (GenericItem i:
              items) {
-            System.out.println(i.toString());
+            //System.out.println(i.toString());
+            Storage.items.add(i);
         }
+
+        //debug
+       /* for (GenericItem e:
+             Storage.items) {
+            System.out.println(e.toString());
+        }
+*/
     }
 
     //write given list of items to file "name"
     public void writeFile(String name, ArrayList<GenericItem> items) {
+        //following: https://www.w3schools.com/java/java_files_create.asp
+        try {
+            FileWriter writer = new FileWriter(name + ".txt");
 
+            for (GenericItem i:
+                 items) {
+                if(i instanceof WorkItem) {
+                    WorkItem j = (WorkItem) i;
+                    writer.write("type:" + j.type + "\n");
+                    writer.write("name:" + j.getName() + "\n");
+                    writer.write("status:" + j.isCompleted() + "\n");
+                    writer.write("desc:" + j.getDescription() + "\n");
+                    writer.write("\n");
+                } else if (i instanceof DeadlineItem) {
+                    DeadlineItem j = (DeadlineItem) i;
+                    writer.write("type:" + j.type + "\n");
+                    writer.write("name:" + j.getName() + "\n");
+                    writer.write("status:" + j.isCompleted() + "\n");
+                    writer.write("desc:" + j.getDescription() + "\n");
+                    writer.write("due:" + j.getDeadline().toString() + "\n");
+                    writer.write("\n");
+                } else if (i instanceof HabitItem) {
+                    HabitItem j = (HabitItem) i;
+                    writer.write("type:" + j.type + "\n");
+                    writer.write("name:" + j.getName() + "\n");
+                    writer.write("status:" + j.isCompleted() + "\n");
+                    writer.write("desc:" + j.getDescription() + "\n");
+                    writer.write("repeat:" + j.getSpaceBetweenDays() + "\n");
+                    writer.write("\n");
+                } else {
+                    writer.write("type:" + i.type + "\n");
+                    writer.write("name:" + i.getName() + "\n");
+                    writer.write("status:" + i.isCompleted() + "\n");
+                    writer.write("\n");
+                }
+
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Unable to write to file!");
+        }
     }
 
     private void addItemToList(GenericItem newItem) {
