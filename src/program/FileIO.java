@@ -4,6 +4,7 @@ import items.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FileIO {
@@ -50,10 +51,28 @@ public class FileIO {
                             addItemToList(new WorkItem(itemName2, Boolean.parseBoolean(status2), desc2));
                             break;
                         case "type:3":
-                            //System.out.println("Found type 3");
+                            String itemName3 = reader.readLine();
+                            itemName3 = itemName3.substring(itemName3.indexOf(":") + 1);
+                            String status3 = reader.readLine();
+                            status3 = status3.substring(status3.indexOf(":") + 1);
+                            String desc3 = reader.readLine();
+                            desc3 = desc3.substring(desc3.indexOf(":") + 1);
+                            String date3 = reader.readLine();
+                            date3 = date3.substring(date3.indexOf(":") + 1);
+                            LocalDate due3 = LocalDate.parse(date3);
+                            addItemToList(new DeadlineItem(itemName3, Boolean.parseBoolean(status3), desc3, due3));
                             break;
                         case "type:4":
-                            //System.out.println("Found type 4");
+                            String itemName4 = reader.readLine();
+                            itemName4 = itemName4.substring(itemName4.indexOf(":") + 1);
+                            String status4 = reader.readLine();
+                            status4 = status4.substring(status4.indexOf(":") + 1);
+                            String desc4 = reader.readLine();
+                            desc4 = desc4.substring(desc4.indexOf(":") + 1);
+                            String recurring = reader.readLine();
+                            recurring = recurring.substring(recurring.indexOf(":") + 1);
+                            int recurInt = Integer.parseInt(recurring);
+                            addItemToList(new HabitItem(itemName4, Boolean.parseBoolean(status4), desc4, recurInt));
                             break;
                     }
                 }

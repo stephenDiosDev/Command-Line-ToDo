@@ -32,4 +32,9 @@ public class DeadlineItem extends GenericItem{
     public LocalDate getDeadline() {
         return this.deadline;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Desc: " + this.description + " Due Date: " + deadline.toString();
+    }
 }

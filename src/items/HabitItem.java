@@ -31,4 +31,9 @@ public class HabitItem extends GenericItem{
     public int getSpaceBetweenDays() {
         return this.spaceBetweenDays;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Desc: " + this.description + " Repeat every " + spaceBetweenDays + " day(s)";
+    }
 }
