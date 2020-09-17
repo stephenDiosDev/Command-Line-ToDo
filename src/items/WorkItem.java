@@ -19,4 +19,9 @@ public class WorkItem extends GenericItem{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Desc: " + this.description;
+    }
 }

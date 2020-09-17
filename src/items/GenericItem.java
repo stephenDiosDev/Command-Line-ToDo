@@ -29,4 +29,9 @@ public class GenericItem {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + " Status: " + this.completed;
+    }
 }

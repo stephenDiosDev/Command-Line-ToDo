@@ -1,0 +1,12 @@
+type:2
+name:study
+status:false
+desc:Read textbook chapter 1-2, then do some math homework. Don't forget the test next week!
+
+type:1
+name:dishes
+status:false
+
+type:1
+name:laundry
+status:true
