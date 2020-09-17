@@ -1,3 +1,5 @@
+package items;
+
 public class HabitItem extends GenericItem{
     private String description;
     private int spaceBetweenDays;

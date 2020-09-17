@@ -1,3 +1,5 @@
+package items;
+
 public class GenericItem {
     private String name;
     private boolean completed;

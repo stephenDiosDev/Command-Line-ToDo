@@ -1,3 +1,5 @@
+package items;
+
 public class WorkItem extends GenericItem{
     private String description;
 
