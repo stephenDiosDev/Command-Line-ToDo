@@ -68,6 +68,10 @@ public class LogicDriver {
         System.out.println("REVERTING ITEM WITH NAME: " + name + "\n");
     }
 
+    public void infoItem(String name) {
+        System.out.println("GIVING INFO ON ITEM WITH NAME: " + name + "\n");
+    }
+
     // given item name, check storage to ensure there is no other item with the same
     // name
     private void duplicateNameCheck(String name) {

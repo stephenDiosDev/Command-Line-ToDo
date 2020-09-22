@@ -59,6 +59,8 @@ public class ProgramGUI {
                 driver.completeItem(input.substring(input.indexOf("complete") + 8));
             } else if (input.contains("uncomplete") && input.indexOf("uncomplete") == 0) {
                 driver.revertItem(input.substring(input.indexOf("uncomplete") + 10));
+            } else if (input.contains("info") && input.indexOf("info") == 0) {
+                driver.infoItem(input.substring(input.indexOf("info") + 4));
             } else {
                 System.out.println("\nYour command \"" + input + "\" is not a recognized command!");
             }
@@ -114,6 +116,7 @@ public class ProgramGUI {
         System.out.println("    complete itemname: Checks the item named itemname as complete from the current list");
         System.out.println(
                 "    uncomplete itemname: Unchecks the item named itemname as uncomplete from the current list");
+        System.out.println("    info itemname: Gives detailed information about item with itemname");
         System.out.println("    help: Lists the available commands\n");
         System.out
                 .println("    ********PLEASE ENTER COMMANDS IN ALL LOWER CASE (file names can use capitals)********\n");
