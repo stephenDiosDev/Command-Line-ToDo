@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 import items.DeadlineItem;
 import items.GenericItem;
+import items.HabitItem;
 import storage.Storage;
 
 //contains the actual program logic, takes inputs from ProgramGUI and sends strings as outputs
@@ -78,7 +79,7 @@ public class LogicDriver {
     }
 
     public void newDeadlineItem(String name, String desc, String date) {
-        System.out.println("Creating new deadline item with name: " + name + "\nAnd Description: " + desc
+        System.out.println("Creating new deadline item with name: " + name + "\nAnd description: " + desc
                 + "\nAnd Due Date: " + date + "\n");
 
         DeadlineItem temp = new DeadlineItem(name, false, desc, LocalDate.parse(date));
@@ -88,8 +89,11 @@ public class LogicDriver {
     }
 
     public void newHabitItem(String name, String desc, int recurring) {
-        System.out.println("CREATING NEW HABIT ITEM WITH NAME: " + name + "\nAND DESC: " + desc + "\nAND RECURRING: "
-                + recurring + "\n");
+        System.out.println("Creating new habit item with name: " + name + "\nAnd description: " + desc
+                + "\nWhich repeats every: " + recurring + " day(s)\n");
+        HabitItem temp = new HabitItem(name, false, desc, recurring);
+        Storage.items.add(temp);
+        System.out.println("[Successfully created habit item and added to current list]");
     }
 
     public void newWorkItem(String name, String desc) {
