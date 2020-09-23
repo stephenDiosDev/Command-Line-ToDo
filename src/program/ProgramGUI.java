@@ -1,6 +1,7 @@
 package program;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //uses the command line to display the gui, processes commands
@@ -61,6 +62,17 @@ public class ProgramGUI {
                 driver.revertItem(input.substring(input.indexOf("uncomplete") + 10));
             } else if (input.contains("info") && input.indexOf("info") == 0) {
                 driver.infoItem(input.substring(input.indexOf("info") + 4));
+            } else if (input.contains("lists") && input.indexOf("lists") == 0) {
+                ArrayList<String> lists = driver.lists();
+                if (lists.isEmpty()) {
+                    System.out.println("You don't have any saved lists!");
+                } else {
+                    System.out.println("\nHere are all your saved lists:");
+                    for (String file : lists) {
+                        System.out.println(file);
+                    }
+                }
+                System.out.println("\n");
             } else {
                 System.out.println("\nYour command \"" + input + "\" is not a recognized command!");
             }
@@ -99,6 +111,7 @@ public class ProgramGUI {
     public void availableCommands() {
         System.out.println("Available Commands: (please keep one command per line!)");
         System.out.println("    exit: Closes the program");
+        System.out.println("    lists: Displays the names of every saved list");
         System.out.println("    new list: Creates a new to do list");
         System.out.println("    save listname: Saves the current to do list with the name listname");
         System.out.println("    load listname: Loads the list named listname");

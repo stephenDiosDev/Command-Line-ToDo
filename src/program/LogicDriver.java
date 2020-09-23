@@ -1,5 +1,9 @@
 package program;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
 import storage.Storage;
 
 //contains the actual program logic, takes inputs from ProgramGUI and sends strings as outputs
@@ -8,6 +12,20 @@ public class LogicDriver {
 
     public LogicDriver() {
         fileIO = new FileIO();
+    }
+
+    public ArrayList<String> lists() {
+        // taken from:
+        // https://stackoverflow.com/questions/1384947/java-find-txt-files-in-specified-folder
+        ArrayList<String> filenameList = new ArrayList<String>();
+        File directory = new File("lists");
+        for (File file : directory.listFiles()) {
+            if (file.getName().endsWith(".txt")) {
+                // add filename without .txt
+                filenameList.add(file.getName().substring(0, file.getName().indexOf(".txt")));
+            }
+        }
+        return filenameList;
     }
 
     public void newList() {
@@ -29,6 +47,7 @@ public class LogicDriver {
         System.out.println("\nREMOVING LIST NAMED: " + filename + "\n");
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void newGenericItem(String name) {
         System.out.println("CREATING NEW GENERIC ITEM WITH NAME: " + name + "\n");
     }
