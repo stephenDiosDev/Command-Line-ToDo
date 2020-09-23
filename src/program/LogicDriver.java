@@ -56,7 +56,10 @@ public class LogicDriver {
     public void removeList(String filename) {
         System.out.println("\nRemoving list named: " + filename + "\n");
         // taken from: https://www.geeksforgeeks.org/delete-file-using-java/
-        File file = new File("src\\lists\\" + filename + ".txt");
+        if (filename.indexOf(" ") == 0) { // if given filename contains space at start
+            filename = filename.substring(1); // remove space at start
+        }
+        File file = new File("lists\\" + filename + ".txt");
         if (file.delete()) {
             System.out.println("[List deleted successfully]");
         } else {
