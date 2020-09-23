@@ -24,7 +24,7 @@ public class FileIO {
     // read in file "name" and parse its contents into this.items
     public void readFile(String name) {
         // using code taken from: https://www.tutorialspoint.com/java/java_files_io.htm
-        File file = new File("src\\lists\\" + name + ".txt");
+        File file = new File("lists\\" + name + ".txt");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
 

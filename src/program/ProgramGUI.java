@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import items.GenericItem;
+import storage.Storage;
+
 //uses the command line to display the gui, processes commands
 public class ProgramGUI {
     private LogicDriver driver;
@@ -20,6 +23,8 @@ public class ProgramGUI {
         while (!input.contains("exit")) { // exit is the escape word
             if (input.contains("clear")) {
                 clearScreen();
+            } else if (input.contains("items") && input.indexOf("items") == 0) {
+                items();
             } else if (input.contains("help") && input.indexOf("help") == 0) {
                 availableCommands();
             } else if (input.contains("new list") && input.indexOf("new list") == 0) {
@@ -27,7 +32,7 @@ public class ProgramGUI {
             } else if (input.contains("save") && input.indexOf("save") == 0) {
                 driver.saveList(input.substring(input.indexOf("save") + 5));
             } else if (input.contains("load") && input.indexOf("load") == 0) {
-                driver.loadList(input.substring(input.indexOf("load") + 4));
+                driver.loadList(input.substring(input.indexOf("load") + 5));
             } else if (input.contains("remove list") && input.indexOf("remove list") == 0) {
                 driver.removeList(input.substring(input.indexOf("remove list") + 11));
             } else if (input.contains("new generic") && input.indexOf("new generic") == 0) {
@@ -82,6 +87,18 @@ public class ProgramGUI {
         in.close();
     }
 
+    private void items() {
+        if (Storage.items.isEmpty()) {
+            System.out.println("You have no current items");
+        } else {
+            System.out.println("\nHere are all the items you currently have:");
+            for (GenericItem e : Storage.items) {
+                System.out.println(e.toString());
+            }
+        }
+        System.out.println("\n");
+    }
+
     private void clearScreen() {
         System.out.println("Clearing Screen");
         // code taken from here:
@@ -111,6 +128,7 @@ public class ProgramGUI {
     public void availableCommands() {
         System.out.println("Available Commands: (please keep one command per line!)");
         System.out.println("    exit: Closes the program");
+        System.out.println("    items: Lists all current items");
         System.out.println("    lists: Displays the names of every saved list");
         System.out.println("    new list: Creates a new to do list");
         System.out.println("    save listname: Saves the current to do list with the name listname");
