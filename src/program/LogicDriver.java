@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+import java.time.LocalDate;
+
+import items.DeadlineItem;
 import items.GenericItem;
 import storage.Storage;
 
@@ -67,7 +70,6 @@ public class LogicDriver {
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void newGenericItem(String name) {
         System.out.println("Creating new basic item with name: " + name + "\n");
         GenericItem temp = new GenericItem(name, false);
@@ -76,8 +78,13 @@ public class LogicDriver {
     }
 
     public void newDeadlineItem(String name, String desc, String date) {
-        System.out.println(
-                "CREATING NEW DEADLINE ITEM WITH NAME: " + name + "\nAND DESC: " + desc + "\nAND DATE: " + date + "\n");
+        System.out.println("Creating new deadline item with name: " + name + "\nAnd Description: " + desc
+                + "\nAnd Due Date: " + date + "\n");
+
+        DeadlineItem temp = new DeadlineItem(name, false, desc, LocalDate.parse(date));
+        Storage.items.add(temp);
+        System.out.println("[Successfully created deadline item and added to current list]");
+
     }
 
     public void newHabitItem(String name, String desc, int recurring) {
@@ -89,6 +96,7 @@ public class LogicDriver {
         System.out.println("CREATING NEW WORK ITEM WITH NAME: " + name + "\nAND DESC: " + desc + "\n");
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // given an item name, load from storage, edit changes and store new version in
     // storage
     public void editItem(String name) {
@@ -115,8 +123,9 @@ public class LogicDriver {
     }
 
     // given item name, check storage to ensure there is no other item with the same
-    // name
-    private void duplicateNameCheck(String name) {
+    // name. True = duplicate found
+    private boolean duplicateNameCheck(String name) {
 
+        return false;
     }
 }
