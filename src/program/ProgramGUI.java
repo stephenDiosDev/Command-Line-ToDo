@@ -25,7 +25,7 @@ public class ProgramGUI {
             } else if (input.contains("new list") && input.indexOf("new list") == 0) {
                 driver.newList();
             } else if (input.contains("save") && input.indexOf("save") == 0) {
-                driver.saveList(input.substring(input.indexOf("save") + 4));
+                driver.saveList(input.substring(input.indexOf("save") + 5));
             } else if (input.contains("load") && input.indexOf("load") == 0) {
                 driver.loadList(input.substring(input.indexOf("load") + 4));
             } else if (input.contains("remove list") && input.indexOf("remove list") == 0) {

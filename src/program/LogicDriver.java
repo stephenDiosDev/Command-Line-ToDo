@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
+import items.GenericItem;
 import storage.Storage;
 
 //contains the actual program logic, takes inputs from ProgramGUI and sends strings as outputs
@@ -38,8 +39,9 @@ public class LogicDriver {
     // save whats in storage into file given a file name
     public void saveList(String filename) {
         System.out.println("\nSaving file named: " + filename + "\n");
+
         // use the file IO class
-        fileIO.writeFile(filename, Storage.items);
+        fileIO.writeFile("lists\\" + filename, Storage.items);
         System.out.println("[List saved successfully]");
         Storage.items.clear();
     }
@@ -64,7 +66,10 @@ public class LogicDriver {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void newGenericItem(String name) {
-        System.out.println("CREATING NEW GENERIC ITEM WITH NAME: " + name + "\n");
+        System.out.println("Creating new basic item with name: " + name + "\n");
+        GenericItem temp = new GenericItem(name, false);
+        Storage.items.add(temp);
+        System.out.println("[Successfully created basic item and added to current list]");
     }
 
     public void newDeadlineItem(String name, String desc, String date) {

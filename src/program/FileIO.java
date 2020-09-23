@@ -101,7 +101,7 @@ public class FileIO {
     public void writeFile(String name, ArrayList<GenericItem> items) {
         // following: https://www.w3schools.com/java/java_files_create.asp
         try {
-            FileWriter writer = new FileWriter("src\\lists\\" + name + ".txt");
+            FileWriter writer = new FileWriter(name + ".txt");
 
             for (GenericItem i : items) {
                 if (i instanceof WorkItem) {
@@ -137,7 +137,7 @@ public class FileIO {
             }
             writer.close();
         } catch (IOException e) {
-            System.out.println("Unable to write to file!");
+            e.printStackTrace();
         }
     }
 
