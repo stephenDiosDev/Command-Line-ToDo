@@ -28,26 +28,41 @@ public class LogicDriver {
         return filenameList;
     }
 
+    // new file gets created in saveList, this function is basically user assurance
+    // fluff
     public void newList() {
-        System.out.println("\nNEW LIST CREATED\n");
+        System.out.println("\nNew list created! Start adding items\n");
         Storage.items.clear(); // empty previous items
     }
 
     // save whats in storage into file given a file name
     public void saveList(String filename) {
-        System.out.println("\nSAVING LIST NAMED: " + filename + "\n");
+        System.out.println("\nSaving file named: " + filename + "\n");
+        // use the file IO class
+        fileIO.writeFile(filename, Storage.items);
+        System.out.println("[List saved successfully]");
+        Storage.items.clear();
     }
 
     // load items from filename into storage
     public void loadList(String filename) {
-        System.out.println("\nLOADING LIST NAMED: " + filename + "\n");
+        System.out.println("\nLoading list named: " + filename + "\n");
+        fileIO.readFile(filename);
+        System.out.println("[List loaded successfully]");
     }
 
     public void removeList(String filename) {
-        System.out.println("\nREMOVING LIST NAMED: " + filename + "\n");
+        System.out.println("\nRemoving list named: " + filename + "\n");
+        // taken from: https://www.geeksforgeeks.org/delete-file-using-java/
+        File file = new File("src\\lists\\" + filename + ".txt");
+        if (file.delete()) {
+            System.out.println("[List deleted successfully]");
+        } else {
+            System.out.println("[Unable to delete list]");
+        }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void newGenericItem(String name) {
         System.out.println("CREATING NEW GENERIC ITEM WITH NAME: " + name + "\n");
     }

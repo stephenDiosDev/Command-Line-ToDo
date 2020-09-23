@@ -1,4 +1,5 @@
 package program;
+
 import items.*;
 import storage.Storage;
 
@@ -9,8 +10,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FileIO {
-    /* TODO
-    function2: given file name and arraylist, open (or create) file, write contents of list to that file
+    /*
+     * TODO function2: given file name and arraylist, open (or create) file, write
+     * contents of list to that file
      */
 
     private ArrayList<GenericItem> items;
@@ -19,20 +21,20 @@ public class FileIO {
         items = new ArrayList<GenericItem>();
     }
 
-    //read in file "name" and parse its contents into this.items
+    // read in file "name" and parse its contents into this.items
     public void readFile(String name) {
-        //using code taken from: https://www.tutorialspoint.com/java/java_files_io.htm
+        // using code taken from: https://www.tutorialspoint.com/java/java_files_io.htm
         File file = new File("src\\lists\\" + name + ".txt");
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
             String temp;
-            while((temp = reader.readLine()) != null) {
-                //System.out.println(temp);
+            while ((temp = reader.readLine()) != null) {
+                // System.out.println(temp);
 
-                //switch statement to create and add new items
-                if(temp.contains("type:")) {    //first line of item
-                    switch(temp) {
+                // switch statement to create and add new items
+                if (temp.contains("type:")) { // first line of item
+                    switch (temp) {
                         case "type:1":
                             String itemName1 = reader.readLine();
                             itemName1 = itemName1.substring(itemName1.indexOf(":") + 1);
@@ -77,36 +79,32 @@ public class FileIO {
                 }
             }
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("File not found!");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("IO Exception!");
         }
 
-        //add items from fileIO to storage class
-        for (GenericItem i:
-             items) {
-            //System.out.println(i.toString());
+        // add items from fileIO to storage class
+        for (GenericItem i : items) {
+            // System.out.println(i.toString());
             Storage.items.add(i);
         }
 
-        //debug
-       /* for (GenericItem e:
-             Storage.items) {
-            System.out.println(e.toString());
-        }
-*/
+        // debug
+        /*
+         * for (GenericItem e: Storage.items) { System.out.println(e.toString()); }
+         */
     }
 
-    //write given list of items to file "name"
+    // write given list of items to file "name"
     public void writeFile(String name, ArrayList<GenericItem> items) {
-        //following: https://www.w3schools.com/java/java_files_create.asp
+        // following: https://www.w3schools.com/java/java_files_create.asp
         try {
-            FileWriter writer = new FileWriter(name + ".txt");
+            FileWriter writer = new FileWriter("src\\lists\\" + name + ".txt");
 
-            for (GenericItem i:
-                 items) {
-                if(i instanceof WorkItem) {
+            for (GenericItem i : items) {
+                if (i instanceof WorkItem) {
                     WorkItem j = (WorkItem) i;
                     writer.write("type:" + j.type + "\n");
                     writer.write("name:" + j.getName() + "\n");
