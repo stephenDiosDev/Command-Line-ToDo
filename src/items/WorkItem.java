@@ -1,6 +1,6 @@
 package items;
 
-public class WorkItem extends GenericItem{
+public class WorkItem extends GenericItem {
     private String description;
     public final int type = 2;
 
@@ -23,6 +23,6 @@ public class WorkItem extends GenericItem{
 
     @Override
     public String toString() {
-        return super.toString() + " Desc: " + this.description;
+        return super.toString() + "\nDesc: " + this.description;
     }
 }

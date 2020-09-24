@@ -1,6 +1,6 @@
 package items;
 
-public class HabitItem extends GenericItem{
+public class HabitItem extends GenericItem {
     private String description;
     private int spaceBetweenDays;
     public final int type = 4;
@@ -35,6 +35,6 @@ public class HabitItem extends GenericItem{
 
     @Override
     public String toString() {
-        return super.toString() + " Desc: " + this.description + " Repeat every " + spaceBetweenDays + " day(s)";
+        return super.toString() + "\nDesc: " + this.description + "\nRepeat every " + spaceBetweenDays + " day(s)";
     }
 }

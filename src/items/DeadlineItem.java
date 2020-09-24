@@ -2,7 +2,7 @@ package items;
 
 import java.time.LocalDate;
 
-public class DeadlineItem extends GenericItem{
+public class DeadlineItem extends GenericItem {
     private LocalDate deadline;
     private String description;
     public final int type = 3;
@@ -36,6 +36,6 @@ public class DeadlineItem extends GenericItem{
 
     @Override
     public String toString() {
-        return super.toString() + " Desc: " + this.description + " Due Date: " + deadline.toString();
+        return super.toString() + "\nDesc: " + this.description + "\nDue Date: " + deadline.toString();
     }
 }

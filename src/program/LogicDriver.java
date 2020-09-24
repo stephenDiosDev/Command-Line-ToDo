@@ -122,7 +122,11 @@ public class LogicDriver {
     }
 
     public void infoItem(String name) {
-        System.out.println("GIVING INFO ON ITEM WITH NAME: " + name + "\n");
+        for (GenericItem e : Storage.items) {
+            if (e.getName().equalsIgnoreCase(name)) {
+                System.out.println(e.toString());
+            }
+        }
     }
 
     // given item name, check storage to ensure there is no other item with the same

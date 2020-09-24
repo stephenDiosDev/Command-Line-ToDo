@@ -10,7 +10,7 @@ public class GenericItem {
         this.completed = false;
     }
 
-    public GenericItem (String name, boolean completed) {
+    public GenericItem(String name, boolean completed) {
         this.name = name;
         this.completed = completed;
     }
@@ -33,6 +33,6 @@ public class GenericItem {
 
     @Override
     public String toString() {
-        return "Name: " + this.name + " Status: " + this.completed;
+        return "\nName: " + this.name + "\nStatus: " + this.completed;
     }
 }
