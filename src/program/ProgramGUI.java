@@ -36,27 +36,43 @@ public class ProgramGUI {
             } else if (input.contains("remove list") && input.indexOf("remove list") == 0) {
                 driver.removeList(input.substring(input.indexOf("remove list") + 11));
             } else if (input.contains("new generic") && input.indexOf("new generic") == 0) {
-                driver.newGenericItem(input.substring(input.indexOf("new generic") + 11));
+                if (driver.duplicateNameCheck(input.substring(input.indexOf("new generic") + 11))) {
+                    System.out.println("An item with that name already exists! Unable to have duplicate names!");
+                } else {
+                    driver.newGenericItem(input.substring(input.indexOf("new generic") + 11));
+                }
             } else if (input.contains("new deadline") && input.indexOf("new deadline") == 0) {
-                String desc, date;
-                System.out.println("Please enter the deadline date (yyyy-mm-dd)");
-                date = in.nextLine();
-                System.out.println("Please enter a short description");
-                desc = in.nextLine();
-                driver.newDeadlineItem(input.substring(input.indexOf("new deadline") + 12), desc, date);
+                if (driver.duplicateNameCheck(input.substring(input.indexOf("new deadline") + 12))) {
+                    System.out.println("An item with that name already exists! Unable to have duplicate names!");
+                } else {
+                    String desc, date;
+                    System.out.println("Please enter the deadline date (yyyy-mm-dd)");
+                    date = in.nextLine();
+                    System.out.println("Please enter a short description");
+                    desc = in.nextLine();
+                    driver.newDeadlineItem(input.substring(input.indexOf("new deadline") + 12), desc, date);
+                }
             } else if (input.contains("new habit") && input.indexOf("new habit") == 0) {
-                String desc;
-                int days;
-                System.out.println("Please enter the space between days (0 = everyday, 1 = every other day)");
-                days = Integer.parseInt(in.nextLine());
-                System.out.println("Please enter a short description");
-                desc = in.nextLine();
-                driver.newHabitItem(input.substring(input.indexOf("new habit") + 9), desc, days);
+                if (driver.duplicateNameCheck(input.substring(input.indexOf("new habit") + 9))) {
+                    System.out.println("An item with that name already exists! Unable to have duplicate names!");
+                } else {
+                    String desc;
+                    int days;
+                    System.out.println("Please enter the space between days (0 = everyday, 1 = every other day)");
+                    days = Integer.parseInt(in.nextLine());
+                    System.out.println("Please enter a short description");
+                    desc = in.nextLine();
+                    driver.newHabitItem(input.substring(input.indexOf("new habit") + 9), desc, days);
+                }
             } else if (input.contains("new work") && input.indexOf("new work") == 0) {
-                String desc;
-                System.out.println("Please enter a short description");
-                desc = in.nextLine();
-                driver.newWorkItem(input.substring(input.indexOf("new work") + 8), desc);
+                if (driver.duplicateNameCheck(input.substring(input.indexOf("new work") + 8))) {
+                    System.out.println("An item with that name already exists! Unable to have duplicate names!");
+                } else {
+                    String desc;
+                    System.out.println("Please enter a short description");
+                    desc = in.nextLine();
+                    driver.newWorkItem(input.substring(input.indexOf("new work") + 8), desc);
+                }
             } else if (input.contains("edit") && input.indexOf("edit") == 0) {
                 driver.editItem(input.substring(input.indexOf("edit") + 4));
             } else if (input.contains("remove") && input.indexOf("remove") == 0) {

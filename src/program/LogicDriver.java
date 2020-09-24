@@ -6,9 +6,7 @@ import java.util.stream.Stream;
 
 import java.time.LocalDate;
 
-import items.DeadlineItem;
-import items.GenericItem;
-import items.HabitItem;
+import items.*;
 import storage.Storage;
 
 //contains the actual program logic, takes inputs from ProgramGUI and sends strings as outputs
@@ -81,11 +79,9 @@ public class LogicDriver {
     public void newDeadlineItem(String name, String desc, String date) {
         System.out.println("Creating new deadline item with name: " + name + "\nAnd description: " + desc
                 + "\nAnd Due Date: " + date + "\n");
-
         DeadlineItem temp = new DeadlineItem(name, false, desc, LocalDate.parse(date));
         Storage.items.add(temp);
         System.out.println("[Successfully created deadline item and added to current list]");
-
     }
 
     public void newHabitItem(String name, String desc, int recurring) {
@@ -97,14 +93,17 @@ public class LogicDriver {
     }
 
     public void newWorkItem(String name, String desc) {
-        System.out.println("CREATING NEW WORK ITEM WITH NAME: " + name + "\nAND DESC: " + desc + "\n");
+        System.out.println("Creating new work item with name: " + name + "\nAnd description: " + desc + "\n");
+        WorkItem temp = new WorkItem(name, false, desc);
+        Storage.items.add(temp);
+        System.out.println("[Successfully created work item and added to current list]");
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // given an item name, load from storage, edit changes and store new version in
     // storage
     public void editItem(String name) {
         System.out.println("EDITING ITEM WITH NAME: " + name + "\n");
+        // look for item in storage, if found let them re write it
     }
 
     // given item name, remove it from storage
@@ -128,8 +127,12 @@ public class LogicDriver {
 
     // given item name, check storage to ensure there is no other item with the same
     // name. True = duplicate found
-    private boolean duplicateNameCheck(String name) {
-
+    public boolean duplicateNameCheck(String name) {
+        for (GenericItem item : Storage.items) {
+            if (name.equalsIgnoreCase(item.getName())) { // duplicate found
+                return true;
+            }
+        }
         return false;
     }
 }
