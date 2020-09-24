@@ -1,0 +1,20 @@
+Available Commands: (please keep one command per line!)
+    exit: Closes the program
+    items: Lists all current items
+    lists: Displays the names of every saved list
+    new list: Creates a new to do list
+    save listname: Saves the current to do list with the name listname
+    load listname: Loads the list named listname
+    remove list listname: Deletes the list named listname
+    new generic itemname: Creates a new generic item named itemname, and adds it to the current list  
+    new deadline itemname: Creates a new deadline item named itemname, and adds it to the current list
+    new habit itemname: Creates a new habit item named itemname, and adds it to the current list      
+    new work itemname: Creates a new work item named itemname, and adds it to the current list        
+    remove itemname: Deletes the item named itemname from the current list
+    complete itemname: Checks the item named itemname as complete from the current list
+    uncomplete itemname: Unchecks the item named itemname as uncomplete from the current list
+    help: Lists the available commands
+
+    ********PLEASE ENTER COMMANDS IN ALL LOWER CASE (file names can use capitals)********
+    
+    You can also clear the screen with command: clear
