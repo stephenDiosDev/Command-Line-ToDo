@@ -1,6 +1,8 @@
 # Command-Line-ToDo
 A small project made for use in CPSC 501 for assignment 1. A simple todo list application that runs on command line.
 
+The commands.txt file has every command for the program. It is the same output you see when using the command: help.
+
 The purpose of the assignment is to take old code you have written and improve it with a series of refactors:
 - 3 simple refactors (including but not limited to renaming, moving repeatable code to a function, moving code between sub and super classes, etc)
 - 2 major refactors (mostly focused around cleaning up and improving an algorithm or section of program logic in code)
