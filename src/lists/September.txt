@@ -1,0 +1,16 @@
+type:4
+name:Brush teeth
+status:true
+desc:Every morning and evening
+repeat:0
+
+type:3
+name:Test
+status:false
+desc:Arky test
+due:2020-10-21
+
+type:1
+name:Take out trash
+status:true
+
