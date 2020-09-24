@@ -4,17 +4,10 @@ import items.*;
 import storage.Storage;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FileIO {
-    /*
-     * TODO function2: given file name and arraylist, open (or create) file, write
-     * contents of list to that file
-     */
-
     private ArrayList<GenericItem> items;
 
     public FileIO() {
@@ -78,7 +71,7 @@ public class FileIO {
                     }
                 }
             }
-
+            reader.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         } catch (IOException e) {

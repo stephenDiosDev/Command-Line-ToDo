@@ -1,6 +1,5 @@
 package program;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +13,9 @@ public class ProgramGUI {
     public ProgramGUI() {
         driver = new LogicDriver();
         startUpScreen();
-        main();
     }
 
-    private void main() {
+    public void main() {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
         while (!input.contains("exit")) { // exit is the escape word
@@ -30,16 +28,16 @@ public class ProgramGUI {
             } else if (input.contains("new list") && input.indexOf("new list") == 0) {
                 driver.newList();
             } else if (input.contains("save") && input.indexOf("save") == 0) {
-                driver.saveList(input.substring(input.indexOf("save") + 5));
+                driver.saveList((input.substring(input.indexOf("save") + 5).trim()));
             } else if (input.contains("load") && input.indexOf("load") == 0) {
-                driver.loadList(input.substring(input.indexOf("load") + 5));
+                driver.loadList((input.substring(input.indexOf("load") + 5).trim()));
             } else if (input.contains("remove list") && input.indexOf("remove list") == 0) {
-                driver.removeList(input.substring(input.indexOf("remove list") + 11));
+                driver.removeList((input.substring(input.indexOf("remove list") + 11).trim()));
             } else if (input.contains("new generic") && input.indexOf("new generic") == 0) {
-                if (driver.duplicateNameCheck(input.substring(input.indexOf("new generic") + 11))) {
+                if (driver.duplicateNameCheck((input.substring(input.indexOf("new generic") + 11).trim()))) {
                     System.out.println("An item with that name already exists! Unable to have duplicate names!");
                 } else {
-                    driver.newGenericItem(input.substring(input.indexOf("new generic") + 11));
+                    driver.newGenericItem((input.substring(input.indexOf("new generic") + 11).trim()));
                 }
             } else if (input.contains("new deadline") && input.indexOf("new deadline") == 0) {
                 if (driver.duplicateNameCheck(input.substring(input.indexOf("new deadline") + 12))) {
@@ -50,7 +48,7 @@ public class ProgramGUI {
                     date = in.nextLine();
                     System.out.println("Please enter a short description");
                     desc = in.nextLine();
-                    driver.newDeadlineItem(input.substring(input.indexOf("new deadline") + 12), desc, date);
+                    driver.newDeadlineItem((input.substring(input.indexOf("new deadline") + 12).trim()), desc, date);
                 }
             } else if (input.contains("new habit") && input.indexOf("new habit") == 0) {
                 if (driver.duplicateNameCheck(input.substring(input.indexOf("new habit") + 9))) {
@@ -62,7 +60,7 @@ public class ProgramGUI {
                     days = Integer.parseInt(in.nextLine());
                     System.out.println("Please enter a short description");
                     desc = in.nextLine();
-                    driver.newHabitItem(input.substring(input.indexOf("new habit") + 9), desc, days);
+                    driver.newHabitItem((input.substring(input.indexOf("new habit") + 9).trim()), desc, days);
                 }
             } else if (input.contains("new work") && input.indexOf("new work") == 0) {
                 if (driver.duplicateNameCheck(input.substring(input.indexOf("new work") + 8))) {
@@ -71,16 +69,14 @@ public class ProgramGUI {
                     String desc;
                     System.out.println("Please enter a short description");
                     desc = in.nextLine();
-                    driver.newWorkItem(input.substring(input.indexOf("new work") + 8), desc);
+                    driver.newWorkItem((input.substring(input.indexOf("new work") + 8).trim()), desc);
                 }
-            } else if (input.contains("edit") && input.indexOf("edit") == 0) {
-                driver.editItem(input.substring(input.indexOf("edit") + 5));
             } else if (input.contains("remove") && input.indexOf("remove") == 0) {
-                driver.removeItem(input.substring(input.indexOf("remove") + 7));
+                driver.removeItem((input.substring(input.indexOf("remove") + 7).trim()));
             } else if (input.contains("complete") && input.indexOf("complete") == 0) {
-                driver.completeItem(input.substring(input.indexOf("complete") + 9));
+                driver.completeItem((input.substring(input.indexOf("complete") + 9).trim()));
             } else if (input.contains("uncomplete") && input.indexOf("uncomplete") == 0) {
-                driver.revertItem(input.substring(input.indexOf("uncomplete") + 11));
+                driver.revertItem((input.substring(input.indexOf("uncomplete") + 11).trim()));
             } else if (input.contains("lists") && input.indexOf("lists") == 0) {
                 ArrayList<String> lists = driver.lists();
                 if (lists.isEmpty()) {
@@ -143,7 +139,6 @@ public class ProgramGUI {
                 "    new habit itemname: Creates a new habit item named itemname, and adds it to the current list");
         System.out.println(
                 "    new work itemname: Creates a new work item named itemname, and adds it to the current list");
-        System.out.println("    edit itemname: Edits the item named itemname from the current list");
         System.out.println("    remove itemname: Deletes the item named itemname from the current list");
         System.out.println("    complete itemname: Checks the item named itemname as complete from the current list");
         System.out.println(

@@ -2,7 +2,6 @@ package program;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import java.time.LocalDate;
 
@@ -97,13 +96,6 @@ public class LogicDriver {
         WorkItem temp = new WorkItem(name, false, desc);
         Storage.items.add(temp);
         System.out.println("[Successfully created work item and added to current list]");
-    }
-
-    // given an item name, load from storage, edit changes and store new version in
-    // storage
-    public void editItem(String name) {
-        System.out.println("EDITING ITEM WITH NAME: " + name + "\n");
-        // look for item in storage, if found let them re write it
     }
 
     // given item name, remove it from storage
