@@ -81,8 +81,6 @@ public class ProgramGUI {
                 driver.completeItem(input.substring(input.indexOf("complete") + 8));
             } else if (input.contains("uncomplete") && input.indexOf("uncomplete") == 0) {
                 driver.revertItem(input.substring(input.indexOf("uncomplete") + 10));
-            } else if (input.contains("info") && input.indexOf("info") == 0) {
-                driver.infoItem(input.substring(input.indexOf("info") + 4));
             } else if (input.contains("lists") && input.indexOf("lists") == 0) {
                 ArrayList<String> lists = driver.lists();
                 if (lists.isEmpty()) {
@@ -116,21 +114,8 @@ public class ProgramGUI {
     }
 
     private void clearScreen() {
-        System.out.println("Clearing Screen");
         // code taken from here:
         // https://stackoverflow.com/questions/2979383/java-clear-the-console
-
-        // the uncommented code should work (famous last words), but this is here in
-        // case it one day doesn't
-        /*
-         * try { new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); }
-         * catch (IOException e) {
-         * 
-         * } catch (InterruptedException e) {
-         * 
-         * }
-         */
-
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
@@ -163,7 +148,6 @@ public class ProgramGUI {
         System.out.println("    complete itemname: Checks the item named itemname as complete from the current list");
         System.out.println(
                 "    uncomplete itemname: Unchecks the item named itemname as uncomplete from the current list");
-        System.out.println("    info itemname: Gives detailed information about item with itemname");
         System.out.println("    help: Lists the available commands\n");
         System.out
                 .println("    ********PLEASE ENTER COMMANDS IN ALL LOWER CASE (file names can use capitals)********\n");

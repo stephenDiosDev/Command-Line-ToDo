@@ -121,14 +121,6 @@ public class LogicDriver {
         System.out.println("REVERTING ITEM WITH NAME: " + name + "\n");
     }
 
-    public void infoItem(String name) {
-        for (GenericItem e : Storage.items) {
-            if (e.getName().equalsIgnoreCase(name)) {
-                System.out.println(e.toString());
-            }
-        }
-    }
-
     // given item name, check storage to ensure there is no other item with the same
     // name. True = duplicate found
     public boolean duplicateNameCheck(String name) {
