@@ -119,12 +119,22 @@ public class LogicDriver {
 
     // given item name, check the status to true
     public void completeItem(String name) {
-        System.out.println("COMPLETING ITEM WITH NAME: " + name + "\n");
+        for (GenericItem item : Storage.items) {
+            if (name.equalsIgnoreCase(item.getName())) {
+                item.setCompleted(true);
+                System.out.println("[Item marked as complete]");
+            }
+        }
     }
 
     // given item name, uncheck the status to false
     public void revertItem(String name) {
-        System.out.println("REVERTING ITEM WITH NAME: " + name + "\n");
+        for (GenericItem item : Storage.items) {
+            if (name.equalsIgnoreCase(item.getName())) {
+                item.setCompleted(false);
+                System.out.println("[Item marked as incomplete]");
+            }
+        }
     }
 
     // given item name, check storage to ensure there is no other item with the same
