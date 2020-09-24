@@ -74,13 +74,13 @@ public class ProgramGUI {
                     driver.newWorkItem(input.substring(input.indexOf("new work") + 8), desc);
                 }
             } else if (input.contains("edit") && input.indexOf("edit") == 0) {
-                driver.editItem(input.substring(input.indexOf("edit") + 4));
+                driver.editItem(input.substring(input.indexOf("edit") + 5));
             } else if (input.contains("remove") && input.indexOf("remove") == 0) {
-                driver.removeItem(input.substring(input.indexOf("remove") + 6));
+                driver.removeItem(input.substring(input.indexOf("remove") + 7));
             } else if (input.contains("complete") && input.indexOf("complete") == 0) {
-                driver.completeItem(input.substring(input.indexOf("complete") + 8));
+                driver.completeItem(input.substring(input.indexOf("complete") + 9));
             } else if (input.contains("uncomplete") && input.indexOf("uncomplete") == 0) {
-                driver.revertItem(input.substring(input.indexOf("uncomplete") + 10));
+                driver.revertItem(input.substring(input.indexOf("uncomplete") + 11));
             } else if (input.contains("lists") && input.indexOf("lists") == 0) {
                 ArrayList<String> lists = driver.lists();
                 if (lists.isEmpty()) {

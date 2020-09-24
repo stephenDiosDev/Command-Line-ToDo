@@ -108,7 +108,13 @@ public class LogicDriver {
 
     // given item name, remove it from storage
     public void removeItem(String name) {
-        System.out.println("REMOVING ITEM WITH NAME: " + name + "\n");
+        for (GenericItem e : Storage.items) {
+            if (e.getName().equalsIgnoreCase(name)) {
+                Storage.items.remove(e);
+                System.out.println("[Removed item successfully]\n");
+                break;
+            }
+        }
     }
 
     // given item name, check the status to true
